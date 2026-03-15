@@ -1,0 +1,49 @@
+{
+  "manifest_version": 3,
+  "name": "SafeRide Form Helper",
+  "description": "Semi-automatic helper for Starbucks Safe Ride Smartsheet submissions.",
+  "version": "0.1.0",
+  "permissions": [
+    "storage",
+    "unlimitedStorage"
+  ],
+  "host_permissions": [
+    "https://app.smartsheet.com/*",
+    "https://tessdata.projectnaptha.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://app.smartsheet.com/b/form/6b5489b0fe984763b2e96350fdcbd9a2*"
+      ],
+      "js": [
+        "vendor/tesseract/tesseract.min.js",
+        "src/content.js"
+      ],
+      "css": [
+        "src/content.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "vendor/tesseract/tesseract.min.js",
+        "vendor/tesseract/worker.min.js",
+        "vendor/tesseract-core/tesseract-core.wasm.js",
+        "vendor/tesseract-core/tesseract-core.wasm",
+        "src/icons/check-circle.svg",
+        "src/icons/check-circle-gray.svg",
+        "src/icons/cross-circle.svg",
+        "src/icons/loading.svg"
+      ],
+      "matches": [
+        "https://app.smartsheet.com/*"
+      ]
+    }
+  ],
+  "action": {
+    "default_title": "SafeRide Helper"
+  }
+}
